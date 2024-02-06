@@ -1,27 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Web site created using create-snowpack-app" />
-    <link rel="stylesheet" type="text/css" href="/index.css" />
-    <title>Snowpack App</title>
-  </head>
-  <body>
-    <img id="img" src="/logo.svg" />
-    <canvas id="canvas"></canvas>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script type="module" src="/dist/index.js"></script>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <script src="/dist/index.js" type="module"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 400px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+    input[type="checkbox"] + label:before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #007bff; 
+      border-radius: 4px; 
+      margin-right: 5px; 
+    }
+    label{
+      display: flex;
+      align-items: center;
+    }
+    input[type="checkbox"]:checked + label:before {
+      content: "\2713"; 
+      font-size: 16px; 
+      accent-color: green; 
+      text-align: center;
+      line-height: 20px;
+    }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    .task-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .task-item span {
+      flex: 1;
+      margin-left: 10px;
+      color: #333;
+    }
+    .task-item button {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .task-item button:hover {
+      background-color: #c82333;
+    }
+    li{
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <form id="new-task-form">
+      <input type="text" id="new-task-title" placeholder="Enter task">
+      <button type="submit">Add</button>
+    </form>
+    <ul id="list"></ul>
+  </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const list = document.getElementById('list');
+      const form = document.getElementById('new-task-form');
+      const input = document.getElementById('new-task-title');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const taskTitle = input.value.trim();
+        if (taskTitle !== '') {
+          const taskItem = document.createElement('li');
+          taskItem.classList.add('task-item');
+          taskItem.innerHTML = `
+            <span>${taskTitle}</span>
+            <button>Delete</button>
+          `;
+          list.appendChild(taskItem);
+          input.value = '';
+        }
+      });
+
+      list.addEventListener('click', function(event) {
+        if (event.target.tagName === 'BUTTON') {
+          event.target.parentElement.remove();
+        }
+      });
+    });
+  </script> -->
+</body>
 </html>

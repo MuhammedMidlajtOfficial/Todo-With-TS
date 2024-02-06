@@ -1,4 +1,3 @@
-/** @type {import("snowpack").SnowpackUserConfig } */
 export default {
   mount: {
     public: { url: '/', static: true },
@@ -22,7 +21,7 @@ export default {
     // "bundle": true,
   },
   packageOptions: {
-    /* ... */
+    source: 'remote', // Fetch dependencies remotely
   },
   devOptions: {
     /* ... */
